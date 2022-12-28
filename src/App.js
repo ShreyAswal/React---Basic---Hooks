@@ -1,25 +1,61 @@
-import logo from './logo.svg';
+
+import React,{ useState } from 'react';
 import './App.css';
+import UseContext from './component/UseContext';
+
+export const ToggleTheme = React.createContext()
 
 function App() {
+
+  const [state,setState] = useState(true)
+
+  const handleToggle = ()=>{
+    setState(state=>!state)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ToggleTheme.Provider value={state} >
+      <button id='toggle' onClick={handleToggle}>Toggle</button>
+      <UseContext/>
+    </ToggleTheme.Provider>
   );
 }
 
 export default App;
+
+// import { UseState } from 'react';
+// import './App.css';
+// import UseState from './component/UseState';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <UseState/>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import './App.css';
+// import UseContext from './components/UseContext';
+
+// export const ToggleTheme = React.createContext()
+
+// function App() {
+
+//   const [state,setState] = useState(true)
+
+//   const handleToggle = ()=>{
+//     setState(state=>!state)
+//   }
+
+//   return (
+//     <ToggleTheme.Provider value={state}>
+//       <button onClick={handleToggle}>Toggle</button>
+//       <UseContext/>
+//     </ToggleTheme.Provider>
+//   );
+// }
+
+// export default App;
